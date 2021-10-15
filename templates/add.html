@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('static/img/contact-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Create a new Post</h1>
+                    <span class="subheading">Thank you for sharing your knowledge.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Text for adding new content</p>
+                <div class="my-5">
+                    <form name="addForm" id="addForm" method="POST" action="{{ url_for('addpost') }}" novalidate>
+                        <!-- Title -->
+                        <div class="form-floating">
+                            <input class="form-control" name="title" id="title" type="text" placeholder="Enter your title..." data-sb-validations="required" />
+                            <label for="title">Title</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Please enter a title.</div>
+                        </div>
+                        <!-- Subtitle -->
+                        <div class="form-floating">
+                            <input class="form-control" name="subtitle" id="subtitle" type="text" placeholder="Enter your subtitle..." data-sb-validations="required,email" />
+                            <label for="subtitle">Subtitle</label>
+                        </div>
+                        <!-- Author -->
+                        <div class="form-floating">
+                            <input class="form-control" name="author" id="author" type="text" placeholder="Author's name" data-sb-validations="required" />
+                            <label for="author">Author</label>
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        </div>
+                        <!-- Blog Content -->
+                        <div class="form-floating">
+                            <textarea class="form-control" id="content" name="content" placeholder="Enter your content here..." style="height: 12rem" data-sb-validations="required"></textarea>
+                            <label for="content">Blog Content</label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        </div>
+                        <br />
+                        <!-- Submit Button-->
+                        <div id="success"></div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-secondary" id="sendMessageButton">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
