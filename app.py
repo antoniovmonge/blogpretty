@@ -23,22 +23,24 @@ class Blogpost(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    posts = Blogpost.query.order_by(Blogpost.date_posted.desc()).all()
+    return render_template('index.html', posts=posts)
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-@app.route('/post')
-def post():
-    return render_template('post.html')
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    post = Blogpost.query.filter_by(id=post_id).one()
+    return render_template('post.html', post=post)
 
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
     
-@app.route('/add')
-def add_post():
+@app.route('/add/')
+def add():
     return render_template('add.html')
 
 @app.route('/addpost/', methods=['POST'])
